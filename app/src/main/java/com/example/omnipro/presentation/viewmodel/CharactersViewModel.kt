@@ -1,9 +1,9 @@
-package com.example.omnipro.ui.viewmodel
+package com.example.omnipro.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.omnipro.domain.usecases.GetCharactersUseCase
-import com.example.omnipro.ui.states.CharactersUiState
+import com.example.omnipro.presentation.states.CharactersUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

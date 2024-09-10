@@ -1,4 +1,4 @@
-package com.example.omnipro.ui.theme
+package com.example.omnipro.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

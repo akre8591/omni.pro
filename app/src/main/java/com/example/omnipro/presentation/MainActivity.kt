@@ -1,10 +1,10 @@
-package com.example.omnipro
+package com.example.omnipro.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.omnipro.ui.theme.OmniProTheme
+import com.example.omnipro.presentation.theme.OmniProTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             OmniProTheme {
-
+                
             }
         }
     }

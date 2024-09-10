@@ -4,6 +4,7 @@ import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Optional
 import com.example.CharactersQuery
 import com.example.omnipro.data.remote.data.CharacterResponse
+import com.example.omnipro.data.remote.data.AppErrors
 import com.example.omnipro.data.remote.data.ResultNetwork
 import com.example.omnipro.data.remote.data.toResponse
 import com.example.omnipro.data.utils.AppDispatcher
@@ -22,9 +23,9 @@ class CharactersClientImpl @Inject constructor(
                 return@withContext ResultNetwork.Success(results)
             } else {
                 return@withContext if (response.exception != null) {
-                    ResultNetwork.FetchError(response.exception ?: Exception())
+                    ResultNetwork.FetchError(AppErrors.COMMUNICATION_SERVER_ERROR)
                 } else {
-                    return@withContext ResultNetwork.GraphqlError(response.errors.orEmpty())
+                    return@withContext ResultNetwork.GraphqlError(AppErrors.UNABLE_COMPLETELY_PROCESS_QUERY)
                 }
             }
         }
