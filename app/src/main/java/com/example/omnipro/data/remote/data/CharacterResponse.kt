@@ -1,6 +1,7 @@
 package com.example.omnipro.data.remote.data
 
 import com.example.CharactersQuery
+import com.example.omnipro.domain.data.CharacterModel
 
 data class CharacterResponse(
     val id: String = "",
@@ -10,7 +11,17 @@ data class CharacterResponse(
     val origin: OriginResponse? = OriginResponse(),
     val location: LocationResponse? = LocationResponse(),
     val image: String = "",
-)
+) {
+    fun toDomain() = CharacterModel(
+        id = id,
+        name = name,
+        status = status,
+        species = species,
+        origin = origin?.toDomain(),
+        location = location?.toDomain(),
+        image = image
+    )
+}
 
 fun List<CharactersQuery.Result?>?.toResponse(): List<CharacterResponse> {
     return this?.map { result ->
