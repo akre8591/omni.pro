@@ -1,0 +1,17 @@
+query Characters {
+    characters(page: 1) {
+        results {
+            id
+            name
+            status
+            species
+            origin {
+                name
+            }
+            image
+            location {
+                name
+            }
+        }
+    }
+}
