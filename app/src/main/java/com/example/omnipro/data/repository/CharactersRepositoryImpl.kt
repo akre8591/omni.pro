@@ -1,5 +1,6 @@
 package com.example.omnipro.data.repository
 
+import com.example.omnipro.data.local.dao.CharactersDao
 import com.example.omnipro.data.remote.charactersclient.CharactersClient
 import com.example.omnipro.data.remote.data.ResultNetwork
 import com.example.omnipro.data.utils.AppDispatcher
@@ -12,6 +13,7 @@ import javax.inject.Inject
 
 class CharactersRepositoryImpl @Inject constructor(
     private val charactersClient: CharactersClient,
+    private val charactersDao: CharactersDao,
     private val dispatcher: AppDispatcher
 ) : CharactersRepository {
     override fun getCharacters(page: Int) = flow {
