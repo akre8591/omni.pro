@@ -1,4 +1,4 @@
-package com.example.omnipro.di.binds
+package com.example.omnipro.data.di.binds
 
 import com.example.omnipro.data.remote.charactersclient.CharactersClient
 import com.example.omnipro.data.remote.charactersclient.CharactersClientImpl

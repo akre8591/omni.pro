@@ -1,4 +1,4 @@
-package com.example.omnipro.di.modules
+package com.example.omnipro.data.di.modules
 
 import com.apollographql.apollo.ApolloClient
 import com.example.omnipro.data.utils.Constants.SERVER_URL

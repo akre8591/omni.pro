@@ -1,15 +1,29 @@
 package com.example.omnipro.data.remote.data
 
+import com.example.CharactersQuery
+
 data class CharacterResponse(
-    val id: Int = 0,
+    val id: String = "",
     val name: String = "",
     val status: String = "",
     val species: String = "",
-    val type: String = "",
-    val gender: String = "",
-    val origin: LocationResponse = LocationResponse(),
-    val location: LocationResponse = LocationResponse(),
+    val origin: OriginResponse? = OriginResponse(),
+    val location: LocationResponse? = LocationResponse(),
     val image: String = "",
-    val episode: List<EpisodeResponse> = emptyList(),
-    val created: String = ""
 )
+
+fun List<CharactersQuery.Result?>?.toResponse(): List<CharacterResponse> {
+    return this?.map { result ->
+        CharacterResponse(
+            id = result?.id.orEmpty(),
+            name = result?.name.orEmpty(),
+            status = result?.status.orEmpty(),
+            species = result?.species.orEmpty(),
+            origin = result?.origin?.toOriginResponse(),
+            location = result?.location?.toLocationResponse(),
+            image = result?.image.orEmpty(),
+        )
+    } ?: run {
+        emptyList()
+    }
+}

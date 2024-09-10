@@ -1,10 +1,13 @@
 package com.example.omnipro.data.remote.data
 
+import com.example.CharactersQuery
+
 data class LocationResponse(
-    val id: Int = 0,
     val name: String = "",
-    val type: String = "",
-    val dimension: String = "",
-    val created: String = "",
-    val residents: List<CharacterResponse> = emptyList()
 )
+
+fun CharactersQuery.Location?.toLocationResponse(): LocationResponse {
+    return this?.let {
+        LocationResponse(name = it.name.orEmpty())
+    } ?: run { LocationResponse() }
+}

@@ -1,8 +1,8 @@
 package com.example.omnipro.data.remote.charactersclient
 
 import com.example.omnipro.data.remote.data.CharacterResponse
-import kotlinx.coroutines.flow.Flow
+import com.example.omnipro.data.remote.data.ResultNetwork
 
 interface CharactersClient {
-    suspend fun getCharactersClient(): Flow<List<CharacterResponse>>
+    suspend fun getCharactersClient(): ResultNetwork<List<CharacterResponse>>
 }
