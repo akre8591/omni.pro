@@ -14,8 +14,8 @@ class CharactersRepositoryImpl @Inject constructor(
     private val charactersClient: CharactersClient,
     private val dispatcher: AppDispatcher
 ) : CharactersRepository {
-    override fun getCharacters() = flow {
-        when (val response = charactersClient.getCharactersClient()) {
+    override fun getCharacters(page: Int) = flow {
+        when (val response = charactersClient.getCharactersClient(page = page)) {
             is ResultNetwork.Success -> {
                 emit(DataState.Success(response.data.toDomain()))
             }

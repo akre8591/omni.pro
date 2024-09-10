@@ -15,7 +15,7 @@ class CharactersViewModel @Inject constructor(
     getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
 
-    val uiState: StateFlow<CharactersUiState> = getCharactersUseCase().stateIn(
+    val uiState: StateFlow<CharactersUiState> = getCharactersUseCase(page = 1).stateIn(
         scope = viewModelScope,
         started = SharingStarted.Lazily,
         initialValue = CharactersUiState.Loading
