@@ -1,12 +1,12 @@
 package com.example.omnipro.data.remote.data
 
 import com.example.CharactersQuery
-import com.example.omnipro.domain.data.LocationModel
+import com.example.omnipro.data.local.entities.LocationCacheModel
 
 data class LocationResponse(
     val name: String = "",
 ) {
-    fun toDomain() = LocationModel(name = name)
+    fun toCache() = LocationCacheModel(locationName = name)
 }
 
 fun CharactersQuery.Location?.toLocationResponse(): LocationResponse {

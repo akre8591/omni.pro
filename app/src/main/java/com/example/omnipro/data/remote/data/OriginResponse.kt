@@ -1,12 +1,12 @@
 package com.example.omnipro.data.remote.data
 
 import com.example.CharactersQuery
-import com.example.omnipro.domain.data.OriginModel
+import com.example.omnipro.data.local.entities.OriginCacheModel
 
 data class OriginResponse(
     val name: String = ""
 ) {
-    fun toDomain() = OriginModel(name = name)
+    fun toCache() = OriginCacheModel(originName = name)
 }
 
 fun CharactersQuery.Origin?.toOriginResponse(): OriginResponse {

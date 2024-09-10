@@ -1,7 +1,7 @@
 package com.example.omnipro.data.remote.data
 
 import com.example.CharactersQuery
-import com.example.omnipro.domain.data.CharacterModel
+import com.example.omnipro.data.local.entities.CharacterEntity
 
 data class CharacterResponse(
     val id: String = "",
@@ -12,15 +12,19 @@ data class CharacterResponse(
     val location: LocationResponse? = LocationResponse(),
     val image: String = "",
 ) {
-    fun toDomain() = CharacterModel(
+    fun toCache() = CharacterEntity(
         id = id,
         name = name,
         status = status,
         species = species,
-        origin = origin?.toDomain(),
-        location = location?.toDomain(),
+        origin = origin?.toCache(),
+        location = location?.toCache(),
         image = image
     )
+}
+
+fun List<CharacterResponse>.toCache(): List<CharacterEntity> {
+    return this.map(CharacterResponse::toCache)
 }
 
 fun List<CharactersQuery.Result?>?.toResponse(): List<CharacterResponse> {

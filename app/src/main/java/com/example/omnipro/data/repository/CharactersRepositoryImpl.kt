@@ -1,11 +1,13 @@
 package com.example.omnipro.data.repository
 
 import com.example.omnipro.data.local.dao.CharactersDao
+import com.example.omnipro.data.local.entities.toDomain
 import com.example.omnipro.data.remote.charactersclient.CharactersClient
 import com.example.omnipro.data.remote.data.ResultNetwork
+import com.example.omnipro.data.remote.data.toCache
 import com.example.omnipro.data.utils.AppDispatcher
-import com.example.omnipro.domain.data.toDomain
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
@@ -16,15 +18,21 @@ class CharactersRepositoryImpl @Inject constructor(
     private val charactersDao: CharactersDao,
     private val dispatcher: AppDispatcher
 ) : CharactersRepository {
+
     override fun getCharacters(page: Int) = flow {
         when (val response = charactersClient.getCharactersClient(page = page)) {
             is ResultNetwork.Success -> {
-                emit(DataState.Success(response.data.toDomain()))
+                charactersDao.insertCharacters(response.data.toCache())
+                val localData = charactersDao.getLocalCharacters().firstOrNull()
+                if (!localData.isNullOrEmpty()) {
+                    emit(DataState.Success(localData.toDomain()))
+                } else {
+                    emit(DataState.Error(""))
+                }
             }
 
             is ResultNetwork.FetchError -> {
                 emit(DataState.Error(""))
-
             }
 
             is ResultNetwork.GraphqlError -> {
