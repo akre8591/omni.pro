@@ -9,7 +9,11 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.example.omnipro.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -56,3 +60,12 @@ fun OmniProTheme(
         content = content
     )
 }
+
+data class OmniProFontFamily(
+    val bold: FontFamily = FontFamily(Font(R.font.opensans_bold)),
+    val semiBold: FontFamily = FontFamily(Font(R.font.opensans_semibold)),
+    val medium: FontFamily = FontFamily(Font(R.font.opensans_light)),
+    val regular: FontFamily = FontFamily(Font(R.font.opensans_regular))
+)
+
+val LocalFont = compositionLocalOf { OmniProFontFamily() }
