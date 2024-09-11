@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">OmniPro</string>
+    <string name="character_name">Name: %s</string>
+    <string name="character_status">Status: %s</string>
+    <string name="character_specie">Specie: %s</string>
+    <string name="server_error">There is server error, please try it later</string>
+    <string name="process_query_error">Your request has not been completed, please try it later</string>
+    <string name="no_cache_data_error">There is not data to display</string>
+    <string name="unknown_error">Unknown error </string>
 </resources>
