@@ -2,6 +2,7 @@ package com.example.omnipro.presentation.theme
 
 import androidx.compose.ui.unit.dp
 
+val DIMEN_0_5 = 0.5.dp
 val DIMEN_1 = 1.dp
 val DIMEN_2 = 2.dp
 val DIMEN_3 = 3.dp

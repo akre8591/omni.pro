@@ -7,4 +7,8 @@
     <string name="process_query_error">Your request has not been completed, please try it later</string>
     <string name="no_cache_data_error">There is not data to display</string>
     <string name="unknown_error">Unknown error </string>
+    <string name="not_determined">Not determined</string>
+    <string name="origin">Origin: %s</string>
+    <string name="location">Location: %s</string>
+
 </resources>

@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.omnipro.presentation.characterdetails.components.CharacterDetailsComponent
 import com.example.omnipro.presentation.characterdetails.states.CharacterDetailsUiState
 import com.example.omnipro.presentation.characterdetails.viewmodel.CharacterDetailsViewModel
 import com.example.omnipro.presentation.common.components.ErrorComponent
@@ -31,7 +32,7 @@ fun CharacterDetailsScreen(
         }
 
         is CharacterDetailsUiState.Success -> {
-            // TODO
+            CharacterDetailsComponent(uiState.characterDetails)
         }
 
         is CharacterDetailsUiState.Error -> {
