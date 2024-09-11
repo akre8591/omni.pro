@@ -39,3 +39,4 @@ val DIMEN_124 = 124.dp
 val DIMEN_127 = 127.dp
 val DIMEN_132 = 132.dp
 val DIMEN_180 = 180.dp
+val DIMEN_240 = 240.dp

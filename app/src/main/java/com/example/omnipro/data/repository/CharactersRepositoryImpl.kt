@@ -49,4 +49,17 @@ class CharactersRepositoryImpl @Inject constructor(
     }.catch {
         emit(DataState.Error(AppErrors.UNKNOWN_ERROR))
     }.flowOn(dispatcher.io())
+
+    override fun getCharacterById(id: String) = flow {
+        val character = charactersDao.getCharacterById(id = id).firstOrNull()
+        if (character != null) {
+            emit(DataState.Success(character.toDomain()))
+        } else {
+            emit(DataState.Error(AppErrors.NO_CACHE_DATA))
+        }
+    }.onStart {
+        DataState.Loading
+    }.catch {
+        emit(DataState.Error(AppErrors.UNKNOWN_ERROR))
+    }.flowOn(dispatcher.io())
 }

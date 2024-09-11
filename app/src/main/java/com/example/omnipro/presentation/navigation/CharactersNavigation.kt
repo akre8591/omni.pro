@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.omnipro.presentation.characterdetails.screens.CharacterDetailsRoute
 import com.example.omnipro.presentation.characterlist.screens.CharacterListRoute
+import com.example.omnipro.presentation.utils.Constants
 
 @Composable
 fun CharactersNavigation(
@@ -21,7 +22,7 @@ fun CharactersNavigation(
         composable(route = NavRoutes.CharacterList.path) {
             CharacterListRoute(navigateTo = navController::navigateTo)
         }
-        composable(route = NavRoutes.CharacterDetails.path) {
+        composable(route = "${NavRoutes.CharacterDetails.path}/{${Constants.CHARACTER_ID}}") {
             CharacterDetailsRoute()
         }
     }

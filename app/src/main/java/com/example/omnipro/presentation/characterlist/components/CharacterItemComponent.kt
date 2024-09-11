@@ -23,7 +23,7 @@ import coil.compose.AsyncImage
 import com.example.omnipro.R
 import com.example.omnipro.domain.data.CharacterModel
 import com.example.omnipro.presentation.navigation.NavRoutes
-import com.example.omnipro.presentation.theme.DIMEN_180
+import com.example.omnipro.presentation.theme.DIMEN_240
 import com.example.omnipro.presentation.theme.DIMEN_32
 import com.example.omnipro.presentation.theme.DIMEN_8
 import com.example.omnipro.presentation.theme.LocalFont
@@ -35,7 +35,7 @@ fun CharacterItemComponent(
 ) {
     Card(
         onClick = {
-            navigateTo(NavRoutes.CharacterDetails.path)
+            navigateTo("${NavRoutes.CharacterDetails.path}/${characterModel.id}")
         },
         elevation = CardDefaults.cardElevation(),
         border = BorderStroke(0.05.dp, Color.White),
@@ -44,7 +44,7 @@ fun CharacterItemComponent(
         AsyncImage(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(DIMEN_180),
+                .height(DIMEN_240),
             model = characterModel.image,
             error = painterResource(R.drawable.ic_launcher_foreground),
             contentDescription = null,
