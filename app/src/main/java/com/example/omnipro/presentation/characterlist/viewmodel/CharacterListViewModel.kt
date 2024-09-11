@@ -1,4 +1,4 @@
-package com.example.omnipro.presentation.viewmodel
+package com.example.omnipro.presentation.characterlist.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-class CharactersViewModel @Inject constructor(
+class CharacterListViewModel @Inject constructor(
     getCharactersUseCase: GetCharactersUseCase
 ) : ViewModel() {
 
