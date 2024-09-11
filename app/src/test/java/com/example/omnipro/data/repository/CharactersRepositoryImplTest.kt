@@ -1,8 +1,8 @@
 package com.example.omnipro.data.repository
 
 import app.cash.turbine.test
-import com.example.omnipro.commons.characterListEntity
-import com.example.omnipro.commons.characterListResponse
+import com.example.omnipro.common.characterListEntity
+import com.example.omnipro.common.characterListResponse
 import com.example.omnipro.data.remote.data.AppErrors
 import com.example.omnipro.data.remote.data.ResultNetwork
 import com.example.omnipro.fakeclasses.FakeCharactersClient
@@ -95,11 +95,28 @@ class CharactersRepositoryImplTest {
     }
 
     @Test
-    fun `the function catches an unexpected exception or error`() = runTest {
+    fun `getting characters catches an unexpected exception or error`() = runTest {
         networkApi.networkAvailable = true
         charactersClient.charactersResponse = null
         sut.getCharacters(page = 1).test {
             assert(awaitItem() is DataState.Loading)
+            assert(awaitItem() is DataState.Error)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun `get character by id function successfully `() = runTest {
+        charactersDao.insertCharacters(characterListEntity)
+        sut.getCharacterById(id = "1").test {
+            assert(awaitItem() is DataState.Success)
+            awaitComplete()
+        }
+    }
+
+    @Test
+    fun `get character by id function was unsuccessful`() = runTest {
+        sut.getCharacterById(id = "1").test {
             assert(awaitItem() is DataState.Error)
             awaitComplete()
         }

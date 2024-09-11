@@ -1,4 +1,4 @@
-package com.example.omnipro.commons
+package com.example.omnipro.common
 
 import com.example.omnipro.data.local.entities.toDomain
 import com.example.omnipro.data.remote.data.CharacterResponse

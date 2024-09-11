@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.omnipro.domain.usecases.GetCharactersUseCase
 import com.example.omnipro.presentation.characterlist.states.CharacterListUiState
 import com.example.omnipro.presentation.characterlist.states.RefreshUiState
+import com.example.omnipro.presentation.utils.Constants.INITIAL_PAGE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,7 +29,7 @@ class CharacterListViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     val uiState: StateFlow<CharacterListUiState> = refreshUiState.flatMapLatest {
         stopRefreshing()
-        getCharactersUseCase(page = 1)
+        getCharactersUseCase(page = INITIAL_PAGE)
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.Lazily,
