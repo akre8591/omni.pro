@@ -1,4 +1,4 @@
-package com.example.technicaltest.utils
+package com.example.omnipro.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

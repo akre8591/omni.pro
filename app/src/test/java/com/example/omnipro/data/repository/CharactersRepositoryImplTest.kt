@@ -8,8 +8,8 @@ import com.example.omnipro.data.remote.data.ResultNetwork
 import com.example.omnipro.fakeclasses.FakeCharactersClient
 import com.example.omnipro.fakeclasses.FakeCharactersDao
 import com.example.omnipro.fakeclasses.FakeNetworkApi
-import com.example.technicaltest.utils.MainDispatcherRule
-import com.example.technicaltest.utils.TestDispatcherImpl
+import com.example.omnipro.utils.MainDispatcherRule
+import com.example.omnipro.utils.TestDispatcherImpl
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
